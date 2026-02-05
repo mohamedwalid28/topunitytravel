@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Top Unity | Premium Destination Management & Travel Services</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#0088CC",
+                        secondary: "#1E3A8A",
+                        accent: "#F59E0B",
+                        "background-light": "#FAFAFA",
+                        "background-dark": "#0F172A",
+                    },
+                    fontFamily: {
+                        display: ["Playfair Display", "serif"],
+                        sans: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                        'xl': '1rem',
+                        '2xl': '1.5rem',
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .dark .glass-nav {
+            background: rgba(15, 23, 42, 0.8);
+        }
+
+        .hero-gradient {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.6) 100%);
+        }
+
+        .luxury-card:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Mobile Menu Animation */
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .mobile-menu-open #mobile-menu {
+            transform: translateX(0);
+        }
+
+        .mobile-menu-closed #mobile-menu {
+            transform: translateX(100%);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-100 font-sans transition-colors duration-300 overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-nav border-b border-slate-200/50 dark:border-slate-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <img alt="Top Unity Logo" class="h-10 md:h-12 w-auto" src="top_unity_Travel___events_logo.png" />
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex space-x-8 items-center">
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Destinations</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Visa Services</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Bespoke Tours</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Corporate</a>
+                    <button
+                        class="bg-primary hover:bg-secondary text-white px-6 py-2.5 rounded-full text-sm font-semibold transition-all shadow-lg hover:shadow-primary/30">
+                        Enquire Now
+                    </button>
+                    <button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                        onclick="document.documentElement.classList.toggle('dark')">
+                        <span class="material-icons-outlined text-xl">dark_mode</span>
+                    </button>
+                </div>
+
+                <!-- Mobile Toggle -->
+                <div class="lg:hidden flex items-center gap-4">
+                    <button class="p-2" onclick="document.documentElement.classList.toggle('dark')">
+                        <span class="material-icons-outlined text-xl">dark_mode</span>
+                    </button>
+                    <button class="text-slate-800 dark:text-white" onclick="toggleMenu()">
+                        <span class="material-icons-outlined text-3xl" id="menu-icon">menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Drawer -->
+    <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-[55] hidden backdrop-blur-sm" onclick="toggleMenu()">
+    </div>
+    <div id="mobile-menu"
+        class="fixed top-0 right-0 h-full w-3/4 max-w-sm bg-white dark:bg-slate-900 z-[60] shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out lg:hidden">
+        <div class="p-6 flex flex-col h-full">
+            <div class="flex justify-end mb-8">
+                <button onclick="toggleMenu()"><span class="material-icons-outlined text-3xl">close</span></button>
+            </div>
+            <div class="flex flex-col space-y-6 text-lg font-medium">
+                <a href="#" class="hover:text-primary" onclick="toggleMenu()">Destinations</a>
+                <a href="#" class="hover:text-primary" onclick="toggleMenu()">Visa Services</a>
+                <a href="#" class="hover:text-primary" onclick="toggleMenu()">Bespoke Tours</a>
+                <a href="#" class="hover:text-primary" onclick="toggleMenu()">Corporate</a>
+                <hr class="border-slate-200 dark:border-slate-800">
+                <button class="bg-primary text-white w-full py-4 rounded-xl font-bold">Enquire Now</button>
+            </div>
+        </div>
+    </div>
+
+    <header class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img alt="Luxury Travel Destination" class="w-full h-full object-cover" src="hero_bg.png" />
+            <div class="absolute inset-0 hero-gradient"></div>
+        </div>
+        <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
+            <h1 class="font-display text-4xl md:text-7xl text-white mb-6 leading-tight">
+                Crafting the World's Most <br class="hidden md:block" /><span
+                    class="italic text-accent">Exquisite</span> Journeys
+            </h1>
+            <p class="text-white/90 text-base md:text-xl mb-12 font-light max-w-2xl mx-auto">
+                Top Unity Premium Travel: Your elite partner for curated luxury experiences, seamless global visas, and
+                bespoke destination management.
+            </p>
+
+            <!-- Responsive Search Bar -->
+            <div
+                class="bg-white/10 backdrop-blur-md p-2 rounded-2xl md:rounded-full border border-white/20 shadow-2xl max-w-3xl mx-auto">
+                <div class="flex flex-col md:flex-row items-center gap-2 p-1">
+                    <div class="flex-1 flex items-center px-4 py-3 md:py-2 w-full">
+                        <span class="material-icons-outlined text-white/70 mr-3">search</span>
+                        <input
+                            class="bg-transparent border-none focus:ring-0 text-white placeholder-white/60 w-full outline-none"
+                            placeholder="Where to next?" type="text" />
+                    </div>
+                    <div class="w-full h-px md:w-px md:h-8 bg-white/20"></div>
+                    <div class="flex-1 flex items-center px-4 py-3 md:py-2 w-full">
+                        <span class="material-icons-outlined text-white/70 mr-3">public</span>
+                        <select
+                            class="bg-transparent border-none focus:ring-0 text-white/90 w-full cursor-pointer appearance-none outline-none">
+                            <option class="text-slate-900">Global Visa Services</option>
+                            <option class="text-slate-900">Luxury Hotels</option>
+                            <option class="text-slate-900">Bespoke Tours</option>
+                        </select>
+                    </div>
+                    <button
+                        class="bg-primary text-white px-8 py-4 md:py-3 rounded-xl md:rounded-full font-semibold w-full md:w-auto hover:bg-secondary transition-colors">
+                        Explore
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce hidden md:block">
+            <span class="material-icons-outlined text-white text-3xl">expand_more</span>
+        </div>
+    </header>
+
+    <!-- Partners Section -->
+    <section class="py-12 bg-white dark:bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 overflow-hidden">
+            <div
+                class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all">
+                <img alt="Partner" class="h-5 md:h-6 dark:invert"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCud1HPpQFHybrk8CbYl4rEGU0GgUxhMW89_2_m8OzHabA6HRK5hd8mpgmegW5r2CgyDfNyY5INhOBfRjFL5jHhzID4RhsZ2xHMJ9zWAh_KLx8h-sJGY-EosQ2ArVtsJe2BJHx7A0nK_qobGi1vy9RwWo9atSRlscCo1cg-ySAjUMDZmjQtJ8FrPOOmnwHKHhms3Uup-dMnk84ez8uo000jQPu6sZH09RawBi5exk6XSWphcuT1trkAaUwZ-tbm8HwXrdNiFySi958" />
+                <img alt="Partner" class="h-6 md:h-8 dark:invert"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp1m_UST7oiB8ujmHL5qOwzwsom8ajO_pvsBLbqEibjf5c7boAnnIVJURgptW4yeg9AZzBKfBNeR6bS7rI9pTQxlNsx5mTP9u6pER1y1hpgLgzpN0vuczorgixxvvrn01dxCO3_n2wMks_haHWgCWSb251ZohR6USSPCk5IiQ2vEmtx7Dilw7apj34awWcjUGxJSbpw3pvHB7ZgmLRlOOKapWPLiQi8aNm3w3mmsV1Jr1D5yKlCJ3VtsAg-KykszvIv0RMqQnSXWs" />
+                <img alt="Partner" class="h-8 md:h-10 dark:invert"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1EaxL1JlLVcDF1tlyYGpVCMkQsp3F8yImQS50CkOF_gCgIgw4jI1KEzLw1DyyvkCEN7fjiR5nj-ugHr4A9f3t1pUrMwMPed-YWFafHkt4eoONZ64mnjaI1d9ueAKX_2Qw3X9jSAbw_LFldZaVNhvXTa-Tipcf4cuB74FRchxDlji9BdJSfuNQ_IX6yY4x0xXQOOmqrV0jDnh6vT-C53hMoNVsvbCsyRafIj8QPY0LRxd7hj7nVvCA0jB3f_sXPCruRso-NgGQNDg" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Offerings Section -->
+    <section class="py-16 md:py-24 px-4 bg-background-light dark:bg-background-dark">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-primary font-semibold tracking-widest uppercase text-xs">Our Signature
+                    Offerings</span>
+                <h2 class="font-display text-3xl md:text-5xl mt-3 text-secondary dark:text-white">Elite Travel
+                    Management</h2>
+                <div class="w-20 h-1 bg-accent mx-auto mt-6"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div
+                    class="luxury-card group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500">
+                    <div class="relative h-60 md:h-64 overflow-hidden">
+                        <img alt="Visa Assistance" class="w-full h-full object-cover transition-transform duration-700"
+                            src="visa.jpg" />
+                    </div>
+                    <div class="p-8">
+                        <div
+                            class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6 text-primary">
+                            <span class="material-icons-outlined">verified_user</span>
+                        </div>
+                        <h3 class="font-display text-2xl mb-4 text-secondary dark:text-white">Global Visa Assistance
+                        </h3>
+                        <p class="text-slate-500 dark:text-slate-400 font-light mb-6">Seamless visa facilitation for
+                            over 150 countries handled by experts.</p>
+                        <a class="text-primary font-semibold flex items-center group/btn" href="#">
+                            Learn More <span
+                                class="material-icons-outlined ml-2 transform group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- Duplicate the structure for other cards as needed -->
+                <!-- Card 2 -->
+                <div
+                    class="luxury-card group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500">
+                    <div class="relative h-60 md:h-64 overflow-hidden">
+                        <img alt="Luxury Stays" class="w-full h-full object-cover transition-transform duration-700"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbXS0tqxgjAEZyFGqMEkP7BjztAwW82xmwwxm8gYmcg2Kfh9rv0dd49gpA9ULaPIKRrPtjQtHgJa0SoFMHaNGnyDuy7YcJ4QHHa17jm9OBMceOodHSBsUrNH_DgcBYfB-CQVnWXQECdeI5Trkd1wOSPyzsvpRM-P380nrISzsbb10EFNHgrWp3Rmwmz1p6iiCzIowk-SXLfmhVH9UE5vADprCcvuSDLyLjPGDUQ4V8z1kpm24qCzKZa3EuiBhmqDexosvgIHafIB8" />
+                    </div>
+                    <div class="p-8">
+                        <div
+                            class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6 text-primary">
+                            <span class="material-icons-outlined">hotel</span>
+                        </div>
+                        <h3 class="font-display text-2xl mb-4 text-secondary dark:text-white">Luxury Stays</h3>
+                        <p class="text-slate-500 dark:text-slate-400 font-light mb-6">Priority access and exclusive
+                            perks at the world’s most prestigious hotels.</p>
+                        <a class="text-primary font-semibold flex items-center group/btn" href="#">
+                            Learn More <span
+                                class="material-icons-outlined ml-2 transform group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div
+                    class="luxury-card group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500">
+                    <div class="relative h-60 md:h-64 overflow-hidden">
+                        <img alt="Curated Trips" class="w-full h-full object-cover transition-transform duration-700"
+                            src="curatedvisits.webp" />
+                    </div>
+                    <div class="p-8">
+                        <div
+                            class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6 text-primary">
+                            <span class="material-icons-outlined">explore</span>
+                        </div>
+                        <h3 class="font-display text-2xl mb-4 text-secondary dark:text-white">Curated Bespoke Trips</h3>
+                        <p class="text-slate-500 dark:text-slate-400 font-light mb-6">Tailor-made itineraries crafted by
+                            experts. From island escapes to deep-dives.</p>
+                        <a class="text-primary font-semibold flex items-center group/btn" href="#">
+                            Learn More <span
+                                class="material-icons-outlined ml-2 transform group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats / About Section -->
+    <section class="py-16 md:py-24 bg-secondary text-white overflow-hidden relative">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-primary/10 -skew-x-12 translate-x-1/4 hidden lg:block"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+                <div class="lg:w-1/2">
+                    <h2 class="font-display text-3xl md:text-5xl mb-6 leading-tight">Excellence in Every <br
+                            class="hidden md:block" />Journey We Define.</h2>
+                    <p class="text-white/80 text-base md:text-lg mb-10 font-light leading-relaxed">
+                        Top Unity is more than a travel agency; we are your personal concierge on the global stage. With
+                        deep-rooted connections and a passion for perfection.
+                    </p>
+                    <div class="grid grid-cols-2 gap-8 mb-12">
+                        <div>
+                            <span class="text-3xl md:text-4xl font-display text-accent">15+</span>
+                            <p class="text-white/60 text-sm mt-2">Years Excellence</p>
+                        </div>
+                        <div>
+                            <span class="text-3xl md:text-4xl font-display text-accent">150+</span>
+                            <p class="text-white/60 text-sm mt-2">Global Destinations</p>
+                        </div>
+                    </div>
+                    <button
+                        class="bg-white text-secondary px-10 py-4 rounded-full font-bold hover:bg-accent hover:text-white transition-all w-full sm:w-auto">
+                        Discover Our Story
+                    </button>
+                </div>
+                <div class="lg:w-1/2 w-full">
+                    <div class="grid grid-cols-2 gap-4">
+                        <img alt="Luxury Interior" class="rounded-2xl mt-8 md:mt-12 shadow-2xl w-full"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlDkyyXdAofKsy1LHcHgEEssfewjMd8Ztg9qslKb8E-CDqQGa-tQYlmxF5wYkecwh3zVBx9lvnX6OI4j6XeIfscd1q2sxzuqw2YkjqS2oYeklVhmAMIYnevytg-dCM3gn5uJsDOiWh4L_YediBNfa-4fTKHrLjfQxV5a4GTQloXOH1C1K6QP9iyKomsKpcwiDGf-wBDgrvKBr5p7fTXkBmRwQfOlRzLy3_LfKiZ-eBvF7HoeScyikwnIi8SP7EzzYEeGG8KGGh_9U" />
+                        <img alt="Luxury Resort" class="rounded-2xl shadow-2xl w-full"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPCym9PnwQvThZqEfe1IpSDjIdFOEu1-yQoQEhohm_tHTCYIsl7_hIis8n1bfTvKbReh32H6QpCeGmUSrwhfWfhQvNO8KKREgDrctxpy_qqrwzRqzg1l9Km1a6rAwhLyHMsuvaPgSbDtAzThzc1Y9shGPjeotHqVDwYd6dJl6TBn_lb7fd06FYZu1HxLZuou9OPFLWt74AJfaMCQXG0hdqvW8MsIjM8KsfDc6Y3OuQAIXLQAroSV3ocmUN17Fu9WIhpCk0i1q7WIw" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinations Section -->
+    <section class="py-16 md:py-24 px-4 bg-slate-50 dark:bg-slate-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
+                <div>
+                    <span class="text-primary font-semibold uppercase tracking-widest text-xs">Exclusives</span>
+                    <h2 class="font-display text-3xl md:text-4xl mt-2 text-secondary dark:text-white">Seasonal Escapes
+                    </h2>
+                </div>
+                <button class="flex items-center text-primary font-bold group">
+                    View All <span
+                        class="material-icons-outlined ml-2 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                </button>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Switzerland Card -->
+                <div class="relative h-[400px] md:h-[450px] group overflow-hidden rounded-3xl cursor-pointer">
+                    <img alt="Switzerland"
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwMcEP7PEXsikS-YUz5WBGXDfthhOom-iH8nIzkMO2yrRVy8VJaxD4PbRIHjatPblB1Ck9uyLEk9zArN33M0QlET0qnaIe0DNQV6DA3U4Lyx44CjoBdCMeZKN4AVpjPevB6ohLsPNwkkp4dDQ4KmlxYVDwCOSbKwMUuW3jo1iUEKmjCOIRUGgZ9P9YpG5xOaIwX3lFq6SViUojrO6MnA5Cv9acnp0pNabTach5va-OGCbQD1fEOhYw2U6aCngxn_SMFAxNX4vglUo" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-0 p-8 w-full">
+                        <p class="text-accent text-sm font-semibold mb-2">Switzerland</p>
+                        <h4 class="text-white text-2xl font-display mb-4">Alpine Serenity</h4>
+                        <div
+                            class="flex justify-between items-center md:opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-white/80 text-sm font-light">7 Days Private Tour</span>
+                            <span class="text-white font-bold">From $8,400</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Repeat for Bali, Venice, Agra... -->
+                <div class="relative h-[400px] md:h-[450px] group overflow-hidden rounded-3xl cursor-pointer">
+                    <img alt="Bali"
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAk3yypM3YTrlhLAxPOVx8pR0akcA3LaF4I2-StuokW6M1DgyOTKXTBWB_qeF1harY1RQ0NaKT_DqCvuT2GdaYCb0Ht5Py7T5YX_OyZkflHLotAcxdtsxX_Q12vMoEFaAsNPMFWxUJHAi-utVmJtbOBXXG4zTA8vOgFw6qtz6TJIOcuVL4hkzrqRY9XpYVPH-RygKpwTsFu6f5ftxTuCeoTUBEd125WRysW2IsLqW7IRYoCu_xa0vqwgEDMHtjzK5ZkqZTnV2Wfc3w" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-0 p-8 w-full">
+                        <p class="text-accent text-sm font-semibold mb-2">Bali, Indonesia</p>
+                        <h4 class="text-white text-2xl font-display mb-4">Tropical Sanctuary</h4>
+                        <div
+                            class="flex justify-between items-center md:opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-white/80 text-sm font-light">10 Days Bespoke</span>
+                            <span class="text-white font-bold">From $6,200</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Other destinations... (omitted for brevity but follow same pattern) -->
+                <!-- Repeat for Bali, Venice, Agra... -->
+                <div class="relative h-[400px] md:h-[450px] group overflow-hidden rounded-3xl cursor-pointer">
+                    <img alt="Bali"
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiFYZM2e5x2nkbJUxAGaQzjK9T-LBai2iz5Nx_Q2R1gn62411CJAJukn1J5SAVq8TC52zc2-5Gvfhk44A_GmtXD65XTiFnYeGMF0Gf166nC_1eI9QNiuz6-Wwx7ceaQclQzRn0OHvuFG5mPt-7iG_vzs5OE8CNwdXBJudyuUHIyx--rWlngaf33Wy9c5NQxnITnNUSrRa_t-UNaO2HFxKz2uwkt8flDvstOZ4Son2owOvDOegPawt8_6QpA47voG-A5nLN3rpD9Os" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-0 p-8 w-full">
+                        <p class="text-accent text-sm font-semibold mb-2">Venice, Italy</p>
+                        <h4 class="text-white text-2xl font-display mb-4">Canal Elegance</h4>
+                        <div
+                            class="flex justify-between items-center md:opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-white/80 text-sm font-light">5 Days Romantic</span>
+                            <span class="text-white font-bold">From $5,500</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Other destinations... (omitted for brevity but follow same pattern) -->
+                <!-- Repeat for Bali, Venice, Agra... -->
+                <div class="relative h-[400px] md:h-[450px] group overflow-hidden rounded-3xl cursor-pointer">
+                    <img alt="Bali"
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpls5deKNkHnFVnUqf3KEBfPxCi5HLEE5p8iDZBF5cX6YynV79pAqRXCK4r30I1bY064q4bsLf0WK8nSmpxJn7EXCDjnACTA9oN2Cf-UeLVdyi9qVcTzm0sS0V-ORJPR39wPI_9wtCKp_xdO1S0-DhlfLXTqcvW6b5LYmkhC3d1qz9qgE49c__a1caF6chZsYW5GcMSWT3TGB86VOF39CZajL26ELyWwpdXBYF7zBv1uweF2luvVJahLoUffg1Up9j-_5Su99X8EE" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-0 p-8 w-full">
+                        <p class="text-accent text-sm font-semibold mb-2">Agra, India</p>
+                        <h4 class="text-white text-2xl font-display mb-4">Royal Heritage</h4>
+                        <div
+                            class="flex justify-between items-center md:opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-white/80 text-sm font-light">6 Days Royal Tour</span>
+                            <span class="text-white font-bold">From $4,800</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Other destinations... (omitted for brevity but follow same pattern) -->
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 md:py-24 px-4">
+        <div
+            class="max-w-5xl mx-auto bg-primary rounded-3xl md:rounded-[3rem] p-10 md:p-20 text-center relative overflow-hidden shadow-2xl shadow-primary/20">
+            <h2 class="font-display text-3xl md:text-5xl text-white mb-8 relative z-10">Ready for a World-Class
+                Experience?</h2>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 relative z-10">
+                <button
+                    class="bg-white text-primary px-10 py-4 rounded-full font-bold hover:bg-slate-50 transition-colors shadow-xl">
+                    Inquire Online
+                </button>
+                <button
+                    class="border-2 border-white/50 text-white px-10 py-4 rounded-full font-bold hover:bg-white/10 transition-colors">
+                    Contact WhatsApp
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-300 pt-16 pb-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1">
+                    <img alt="Top Unity Logo" class="h-12 w-auto mb-8 grayscale brightness-[10]"
+                        src="top_unity_Travel___events_logo.png" />
+                    <p class="font-light text-slate-400">Redefining premium travel with unmatched dedication to quality
+                        and luxury.</p>
+                </div>
+                <div>
+                    <h5 class="text-white font-bold mb-6">Services</h5>
+                    <ul class="space-y-4 text-sm">
+                        <li><a class="hover:text-primary transition-colors" href="#">Visa Services</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">Hotel Bookings</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#">VIP Transportation</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-white font-bold mb-6">Contact</h5>
+                    <ul class="space-y-4 text-sm font-light">
+                        <li class="flex items-start">
+                            <span class="material-icons-outlined text-primary mr-3 text-sm">place</span>
+                            <span>Business District, Dubai, UAE</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="material-icons-outlined text-primary mr-3 text-sm">email</span>
+                            <span><a href="mailto:sales@topunitytravel.com"
+                                    class="hover:text-primary transition-colors">sales@topunitytravel.com</a></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-slate-500">
+                <p>© 2026 Top Unity Travel. All Rights Reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="hover:text-white">Twitter</a>
+                    <a href="#" class="hover:text-white">Instagram</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle Logic
+        const menu = document.getElementById('mobile-menu');
+        const overlay = document.getElementById('mobile-overlay');
+        const menuIcon = document.getElementById('menu-icon');
+        let isMenuOpen = false;
+
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                menu.classList.remove('translate-x-full');
+                overlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Prevent scroll
+            } else {
+                menu.classList.add('translate-x-full');
+                overlay.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-xl', 'py-2');
+            } else {
+                nav.classList.remove('shadow-xl', 'py-2');
+            }
+        });
+    </script>
+
+</body>
+
+</html>
